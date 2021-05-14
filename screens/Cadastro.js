@@ -46,10 +46,10 @@ export default function Cadastro() {
   const [email, setEmail] = React.useState("");
 
   return (
-    <View>
+    <View style={styleFormat.container}>
       <ScrollView horizontal={false}>
         {/*Área de cadastro de usuario */}
-        <View>
+        <View style={styleFormat.cxinput}>
           <TextInput
             style={styleFormat.input}
             placeholder="Nome Usuario"
@@ -69,7 +69,7 @@ export default function Cadastro() {
         {/* fim area de cadastro de usuario */}
 
         {/*Área de cadastro de cliente */}
-        <View>
+        <View style={styleFormat.cxinput}>
           <TextInput
             style={styleFormat.input}
             placeholder="Nome Cliente"
@@ -85,11 +85,22 @@ export default function Cadastro() {
             keyboardType="number-pad"
             onChangeText={(value) => setCPF(value)}
           />
+
+          <Picker
+            mode="dropdown"
+            selectedValue={sexo}
+            onValueChange={setSexo}
+            style={styleFormat.input}
+          >
+            <Picker.Item label="Masculino" value="M" />
+            <Picker.Item label="Feminino" value="F" />
+            <Picker.Item label="Outros" value="O" />
+          </Picker>
         </View>
         {/* Fim Área de cadastro de cliente */}
 
         {/*Área de cadastro de endereço */}
-        <View>
+        <View style={styleFormat.cxinput}>
           <TextInput
             style={styleFormat.input}
             placeholder="Logradouro"
@@ -129,7 +140,7 @@ export default function Cadastro() {
         {/* Fim Área de cadastro de endereço */}
 
         {/*Área de cadastro de contato */}
-        <View>
+        <View style={styleFormat.cxinput}>
           <TextInput
             style={styleFormat.input}
             placeholder="Telefone"
@@ -142,14 +153,15 @@ export default function Cadastro() {
             style={styleFormat.input}
             placeholder="E-mail"
             value={email}
-            keyboardType="email-addres"
+            keyboardType="email-address"
             onChangeText={(value) => setEmail(value)}
           />
         </View>
         {/* Fim Área de cadastro de contato */}
 
-        <TouchableOpacity style={styleFormat.btnCadastro} />
-        <Text style={styleFormat.txtCadastro}>Cadastrar</Text>
+        <TouchableOpacity style={styleFormat.btnCadastro}>
+          <Text style={styleFormat.txtCadastro}>Cadastrar</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
